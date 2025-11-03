@@ -3,84 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OF Detector - Find Out in 3 Seconds</title>
+    <title>OF Detector - Find Out in 3 Seconds 💀</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
         }
-        .animate-fadeIn { animation: fadeIn 0.5s ease-out; }
-        .animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+        }
+        
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(168, 85, 247, 0.4); }
+            50% { box-shadow: 0 0 40px rgba(168, 85, 247, 0.6); }
+        }
+        
+        .animate-fadeIn { animation: fadeIn 0.6s ease-out; }
+        .animate-slideIn { animation: slideIn 0.5s ease-out; }
+        .animate-pulse-custom { animation: pulse 2s ease-in-out infinite; }
+        .animate-glow { animation: glow 2s ease-in-out infinite; }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .profile-pic-border {
+            border: 4px solid transparent;
+            background: linear-gradient(#1f2937, #1f2937) padding-box,
+                        linear-gradient(135deg, #667eea, #764ba2) border-box;
+        }
+        
+        .scanline {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .scanline::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: scan 2s linear infinite;
+        }
+        
+        @keyframes scan {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
     </style>
 </head>
-<body class="bg-gradient-to-br from-gray-900 via-purple-900 to-black text-white min-h-screen">
-    <div class="max-w-2xl mx-auto pt-12 p-4">
-        <div class="text-center mb-12">
-            <div class="flex items-center justify-center mb-4">
-                <svg class="w-12 h-12 text-red-500 mr-3 animate-pulse" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-5.5-2.5l7.51-3.49L17.5 6.5 9.99 9.99 6.5 17.5zm5.5-6.6c.61 0 1.1.49 1.1 1.1s-.49 1.1-1.1 1.1-1.1-.49-1.1-1.1.49-1.1 1.1-1.1z"/>
-                </svg>
-                <h1 class="text-5xl font-black tracking-tight bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                    OF DETECTOR
-                </h1>
+<body class="bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 text-white min-h-screen">
+    
+    <!-- Background decorative elements -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse-custom"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse-custom" style="animation-delay: 1s;"></div>
+    </div>
+    
+    <div class="relative max-w-4xl mx-auto pt-8 md:pt-16 p-4 md:p-6">
+        
+        <!-- Header -->
+        <div class="text-center mb-8 md:mb-16">
+            <div class="flex items-center justify-center mb-6">
+                <div class="relative">
+                    <svg class="w-16 h-16 md:w-20 md:h-20 text-red-500 animate-pulse-custom" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                    </svg>
+                    <div class="absolute inset-0 blur-xl bg-red-500 opacity-50"></div>
+                </div>
             </div>
-            <p class="text-gray-400 text-lg font-semibold">Find out in 3 seconds. No cap. 💀</p>
-            <p class="text-gray-600 text-sm mt-2">Built by a different type of dev</p>
+            <h1 class="text-5xl md:text-7xl font-black tracking-tighter mb-4 gradient-text">
+                OF DETECTOR
+            </h1>
+            <p class="text-gray-300 text-lg md:text-xl font-semibold mb-2">
+                Find out in <span class="text-purple-400 font-black">3 seconds</span>. No cap. 💀
+            </p>
+            <p class="text-gray-500 text-sm md:text-base">
+                Built different. Not your average LinkedIn dev.
+            </p>
         </div>
 
-        <div class="bg-gray-800 rounded-2xl p-8 shadow-2xl border border-purple-500/30 mb-8">
+        <!-- Search Box -->
+        <div class="bg-gray-800/80 backdrop-blur-xl rounded-3xl p-6 md:p-10 shadow-2xl border border-purple-500/20 mb-8 card-hover">
             <div class="flex flex-col gap-4">
-                <div class="relative">
+                <div class="relative group">
                     <input 
                         type="text" 
                         id="username"
                         placeholder="Instagram username..."
-                        class="w-full bg-gray-900 text-white px-6 py-4 rounded-xl border border-gray-600 focus:border-purple-500 focus:outline-none text-lg font-medium placeholder-gray-500"
+                        class="w-full bg-gray-900/80 text-white px-6 py-5 rounded-2xl border-2 border-gray-700 focus:border-purple-500 focus:outline-none text-lg md:text-xl font-medium placeholder-gray-500 transition-all"
                     />
-                    <svg class="absolute right-4 top-4 w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-                    </svg>
+                    <div class="absolute right-5 top-1/2 -translate-y-1/2">
+                        <svg class="w-6 h-6 text-gray-500 group-focus-within:text-purple-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                        </svg>
+                    </div>
                 </div>
                 
                 <button 
                     onclick="detectOF()"
                     id="detectBtn"
-                    class="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-4 rounded-xl transition-all transform hover:scale-[1.02] text-lg shadow-lg"
+                    class="relative bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 hover:from-purple-700 hover:via-pink-700 hover:to-red-700 text-white font-black py-5 rounded-2xl transition-all transform hover:scale-[1.02] active:scale-[0.98] text-lg md:text-xl shadow-xl overflow-hidden group"
                 >
-                    DETECT 🔍
+                    <span class="relative z-10 flex items-center justify-center gap-2">
+                        <span id="btnText">DETECT</span>
+                        <span id="btnIcon">🔍</span>
+                    </span>
+                    <div class="absolute inset-0 bg-gradient-to-r from-purple-700 via-pink-700 to-red-700 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 </button>
             </div>
 
-            <div id="error" class="hidden mt-4 p-4 bg-red-900/50 border border-red-500 rounded-lg text-red-200"></div>
+            <div id="error" class="hidden mt-4 p-4 bg-red-900/50 backdrop-blur-sm border border-red-500 rounded-xl text-red-200 animate-fadeIn"></div>
         </div>
 
+        <!-- Results Container -->
         <div id="results" class="hidden"></div>
 
-        <div class="text-center mt-12 space-y-2">
-            <p class="text-gray-400 font-bold">Built in 3 hours. Your ex's secret is 3 seconds away 💀</p>
-            <p class="text-gray-600 text-sm">Not your average LinkedIn dev 🎯</p>
+        <!-- Footer -->
+        <div class="text-center mt-16 space-y-3 pb-8">
+            <p class="text-gray-400 font-bold text-lg">
+                Built in 3 hours. Your ex's secret is 3 seconds away 💀
+            </p>
+            <p class="text-gray-600 text-sm">
+                Not your average LinkedIn dev 🎯
+            </p>
+            <div class="flex items-center justify-center gap-4 mt-4 text-gray-600 text-xs">
+                <span>Searches public data only</span>
+                <span>•</span>
+                <span>Use responsibly</span>
+            </div>
         </div>
     </div>
 
     <script>
-        // CHANGE THIS TO YOUR BACKEND URL AFTER DEPLOYING
         const API_URL = 'http://localhost:5000/api/check';
 
         function showError(message) {
             const errorDiv = document.getElementById('error');
-            errorDiv.textContent = '⚠️ ' + message;
+            errorDiv.innerHTML = `<div class="flex items-center gap-2"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/></svg>${message}</div>`;
             errorDiv.classList.remove('hidden');
-            setTimeout(() => errorDiv.classList.add('hidden'), 3000);
+            setTimeout(() => errorDiv.classList.add('hidden'), 4000);
         }
 
         async function detectOF() {
             const username = document.getElementById('username').value.trim().replace('@', '');
             const btn = document.getElementById('detectBtn');
+            const btnText = document.getElementById('btnText');
+            const btnIcon = document.getElementById('btnIcon');
             const resultsDiv = document.getElementById('results');
 
             if (!username) {
@@ -88,8 +186,11 @@
                 return;
             }
 
-            btn.innerHTML = '<svg class="inline animate-spin w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>SCANNING...';
+            // Loading state
             btn.disabled = true;
+            btn.classList.add('scanline');
+            btnText.textContent = 'SCANNING';
+            btnIcon.innerHTML = '<svg class="inline animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>';
             resultsDiv.classList.add('hidden');
 
             try {
@@ -105,108 +206,176 @@
                 displayResults(data);
 
             } catch (error) {
-                showError('Backend not connected. Deploy backend first.');
+                showError('Backend not connected. Deploy backend first or check API_URL.');
                 console.error(error);
             } finally {
-                btn.innerHTML = 'DETECT 🔍';
                 btn.disabled = false;
+                btn.classList.remove('scanline');
+                btnText.textContent = 'DETECT';
+                btnIcon.textContent = '🔍';
             }
         }
 
         function displayResults(data) {
             const resultsDiv = document.getElementById('results');
             
-            const statusColors = {
-                'HIGHLY LIKELY': 'text-red-500',
-                'POSSIBLY': 'text-yellow-500',
-                'LOW CONFIDENCE': 'text-yellow-600',
-                'Not Found': 'text-green-500'
-            };
-
-            const statusColor = statusColors[data.status] || 'text-gray-500';
+            const profile = data.profile;
+            const statusColor = data.status_color;
             
-            const barColor = data.confidence >= 70 ? 'bg-gradient-to-r from-red-600 to-red-500' :
-                            data.confidence >= 40 ? 'bg-gradient-to-r from-yellow-600 to-yellow-500' :
-                            data.confidence >= 15 ? 'bg-gradient-to-r from-yellow-700 to-orange-600' :
-                            'bg-gradient-to-r from-green-600 to-green-500';
+            const barColor = data.confidence >= 70 ? 'from-red-600 to-red-500' :
+                            data.confidence >= 40 ? 'from-yellow-600 to-yellow-500' :
+                            data.confidence >= 15 ? 'from-yellow-700 to-orange-600' :
+                            'from-green-600 to-green-500';
 
-            let findingsHtml = '';
-            if (data.findings && data.findings.length > 0) {
-                findingsHtml = `
-                    <div class="mt-8 pt-6 border-t border-gray-700">
-                        <h3 class="text-xl font-bold mb-4 text-purple-400">🔍 Evidence Found:</h3>
-                        <div class="space-y-3">
-                            ${data.findings.map(f => `
-                                <div class="bg-gray-900 p-4 rounded-lg border border-purple-500/20">
-                                    <div class="flex justify-between items-start">
-                                        <div>
-                                            <span class="font-semibold text-purple-400 text-lg">${f.source}</span>
-                                            <p class="text-gray-400 text-sm mt-1">${f.matches} ${f.matches === 1 ? 'match' : 'matches'} found</p>
-                                        </div>
-                                        <span class="text-xs text-gray-500 bg-gray-800 px-3 py-1 rounded-full">+${f.confidence} pts</span>
-                                    </div>
-                                </div>
-                            `).join('')}
+            // Profile section
+            let profileHtml = '';
+            if (profile.profile_pic || profile.display_name) {
+                profileHtml = `
+                    <div class="flex items-center gap-4 md:gap-6 mb-6 p-6 bg-gray-900/50 rounded-2xl border border-gray-700">
+                        ${profile.profile_pic ? `
+                            <img src="${profile.profile_pic}" 
+                                 alt="${profile.username}" 
+                                 class="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover profile-pic-border"
+                                 onerror="this.style.display='none'">
+                        ` : `
+                            <div class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-3xl font-black profile-pic-border">
+                                ${profile.username.charAt(0).toUpperCase()}
+                            </div>
+                        `}
+                        <div class="flex-1">
+                            <h3 class="text-2xl md:text-3xl font-black text-white mb-1">@${profile.username}</h3>
+                            ${profile.display_name ? `<p class="text-gray-400 text-lg font-semibold">${profile.display_name}</p>` : ''}
+                            ${profile.bio ? `<p class="text-gray-500 text-sm mt-2 line-clamp-2">${profile.bio}</p>` : ''}
                         </div>
                     </div>
                 `;
-            } else {
-                findingsHtml = `
-                    <div class="mt-6 p-6 bg-gray-900 rounded-lg border border-gray-700 text-center">
-                        <p class="text-gray-300 font-medium">Clean slate. No evidence found.</p>
+            }
+
+            // OF Link section
+            let ofLinkHtml = '';
+            if (data.of_links && data.of_links.length > 0) {
+                ofLinkHtml = `
+                    <div class="mb-6 p-6 bg-gradient-to-r from-red-900/40 to-pink-900/40 rounded-2xl border-2 border-red-500/50 animate-glow">
+                        <div class="flex items-center gap-3 mb-3">
+                            <svg class="w-6 h-6 text-red-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <h4 class="text-xl font-black text-red-400">OnlyFans Profile Found</h4>
+                        </div>
+                        ${data.of_links.map(link => `
+                            <a href="${link}" target="_blank" 
+                               class="block p-4 bg-gray-900/60 rounded-xl hover:bg-gray-900/80 transition-all mb-2 group">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-purple-300 font-mono text-sm break-all">${link}</span>
+                                    <svg class="w-5 h-5 text-gray-400 group-hover:text-purple-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                                    </svg>
+                                </div>
+                            </a>
+                        `).join('')}
+                    </div>
+                `;
+            }
+
+            // Evidence section
+            let evidenceHtml = '';
+            const evidence = data.evidence;
+            const hasEvidence = evidence.bio_indicators?.length > 0 || evidence.search_findings?.length > 0;
+            
+            if (hasEvidence) {
+                evidenceHtml = `
+                    <div class="mt-8 pt-6 border-t border-gray-700">
+                        <h3 class="text-2xl font-bold mb-4 text-purple-400 flex items-center gap-2">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            </svg>
+                            Evidence Found
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            ${evidence.bio_indicators?.length > 0 ? `
+                                <div class="bg-gray-900/50 p-5 rounded-xl border border-purple-500/20 animate-slideIn">
+                                    <h4 class="font-bold text-purple-300 mb-3 flex items-center gap-2">
+                                        <span>📝</span> Bio Indicators
+                                    </h4>
+                                    <ul class="space-y-2 text-sm">
+                                        ${evidence.bio_indicators.map(ind => `
+                                            <li class="text-gray-300 flex items-start gap-2">
+                                                <span class="text-purple-400 mt-1">•</span>
+                                                <span>${ind}</span>
+                                            </li>
+                                        `).join('')}
+                                    </ul>
+                                </div>
+                            ` : ''}
+                            ${evidence.search_findings?.length > 0 ? `
+                                <div class="bg-gray-900/50 p-5 rounded-xl border border-purple-500/20 animate-slideIn" style="animation-delay: 0.1s;">
+                                    <h4 class="font-bold text-purple-300 mb-3 flex items-center gap-2">
+                                        <span>🔍</span> Search Results
+                                    </h4>
+                                    <ul class="space-y-2 text-sm">
+                                        ${evidence.search_findings.map(find => `
+                                            <li class="text-gray-300 flex items-start gap-2">
+                                                <span class="text-purple-400 mt-1">•</span>
+                                                <span>${find}</span>
+                                            </li>
+                                        `).join('')}
+                                    </ul>
+                                </div>
+                            ` : ''}
+                        </div>
                     </div>
                 `;
             }
 
             resultsDiv.innerHTML = `
-                <div class="bg-gray-800 rounded-2xl p-8 shadow-2xl border border-purple-500/30 animate-fadeIn">
-                    <div class="text-center mb-6">
-                        <h2 class="text-3xl font-black mb-2">@${data.username}</h2>
-                        <p class="text-5xl font-black ${statusColor} mb-4 tracking-tight">${data.status}</p>
+                <div class="bg-gray-800/80 backdrop-blur-xl rounded-3xl p-6 md:p-10 shadow-2xl border border-purple-500/20 animate-fadeIn">
+                    ${profileHtml}
+                    
+                    <div class="text-center mb-8">
+                        <p class="text-6xl md:text-8xl font-black ${statusColor} mb-4 tracking-tighter animate-pulse-custom">
+                            ${data.status}
+                        </p>
                         
-                        <div class="w-full bg-gray-700 rounded-full h-6 mb-3 overflow-hidden shadow-inner">
-                            <div class="h-6 rounded-full transition-all duration-1000 ease-out ${barColor}" style="width: ${data.confidence}%"></div>
+                        <div class="max-w-md mx-auto">
+                            <div class="w-full bg-gray-700/50 rounded-full h-8 mb-3 overflow-hidden shadow-inner backdrop-blur-sm">
+                                <div class="h-8 rounded-full transition-all duration-1000 ease-out bg-gradient-to-r ${barColor}" 
+                                     style="width: ${data.confidence}%"></div>
+                            </div>
+                            <p class="text-gray-200 text-2xl font-black">
+                                ${data.confidence}% <span class="text-gray-400 font-normal">Confidence</span>
+                            </p>
                         </div>
-                        <p class="text-gray-300 text-lg font-bold">${data.confidence}% Confidence</p>
                     </div>
 
-                    ${findingsHtml}
+                    ${ofLinkHtml}
+                    ${evidenceHtml}
 
-                    <div class="mt-8 pt-6 border-t border-gray-700">
-                        <p class="text-xs text-gray-500 text-center">
-                            Searches publicly available data. Results are estimates.
+                    ${!hasEvidence && !ofLinkHtml ? `
+                        <div class="mt-6 p-8 bg-gray-900/50 rounded-2xl border border-gray-700 text-center">
+                            <svg class="w-16 h-16 text-green-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <p class="text-xl text-gray-300 font-semibold">Clean slate. No evidence found.</p>
+                        </div>
+                    ` : ''}
+
+                    <div class="mt-8 pt-6 border-t border-gray-700/50">
+                        <p class="text-xs text-gray-500 text-center leading-relaxed">
+                            This tool searches publicly available data across Instagram, Google, Twitter, and Reddit.<br/>
+                            Results are probability estimates based on pattern analysis. Use responsibly.
                         </p>
                     </div>
                 </div>
             `;
 
             resultsDiv.classList.remove('hidden');
+            resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
 
+        // Enter key support
         document.getElementById('username').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') detectOF();
         });
     </script>
 </body>
 </html>
-```
-
-4. Click **"Commit new file"**
-
----
-
-**File 4: `.gitignore`**
-
-1. Click **"Add file"** → **"Create new file"**
-2. Name it: `.gitignore`
-3. Paste this:
-```
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.Python
-env/
-venv/
-.env
-.venv
